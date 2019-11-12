@@ -9,7 +9,7 @@ var options = {
 	url: 'https://api.wit.ai/entities',
 	headers:
 	{
-		'Authorization': 'Bearer UM4VDGBQO3KB3NT4P25UNZKLA3GZ6J6T',
+		'Authorization': '',
 		'Content-Type': 'application/json',
 	},
 	data: {
