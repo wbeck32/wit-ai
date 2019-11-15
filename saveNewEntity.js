@@ -1,29 +1,40 @@
-var request = require("request");
-const { Wit, log } = require('node-wit');
+let req = require("request");
+const http = require('http');
+let querystring = require('querystring')
 require('dotenv').config()
 
-
+const postData = querystring.stringify({
+	'msg': 'Hello World!'
+});
 
 var options = {
 	method: 'POST',
 	url: 'https://api.wit.ai/entities',
 	headers:
 	{
-		'Authorization': '',
+		'Authorization': process.env.BEARER,
 		'Content-Type': 'application/json',
+		'Content-Length': Buffer.byteLength(postData)
 	},
-	data: {
-		"doc": "An imaginary city that I thought I did liked",
-		"id": "i_did_liked_my_imaginary_favorite_city"
-
-	}
 };
 
-request(options, function (error, response, body) {
-	console.log('options: ', options);
-	// console.log('body: ', body);
-	// console.log('response: ', response);
-	if (error) throw new Error(error);
 
-	console.log('body: ', body);
+req = http.request(options, (res) => {
+	console.log(`STATUS: ${res.statusCode}`);
+	console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+	res.setEncoding('utf8');
+	res.on('data', (chunk) => {
+		console.log(`BODY: ${chunk}`);
+	});
+	res.on('end', () => {
+		console.log('No more data in response.');
+	});
 });
+
+req.on('error', (e) => {
+	console.error(`problem with request: ${e.message}`);
+});
+
+// write data to request body
+req.write(postData);
+req.end();

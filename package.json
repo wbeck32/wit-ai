@@ -7,7 +7,9 @@
     "dotenv": "^8.2.0",
     "eslint": "^6.6.0",
     "node-wit": "^5.0.0",
-    "nodemon": "^1.19.4"
+    "nodemon": "^1.19.4",
+    "request": "^2.88.0",
+    "superagent": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -20,7 +22,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./saveNewEntity.js"
+    "start": "nodemon ./returnMeaningOfSentence.js"
   },
   "repository": {
     "type": "git",
