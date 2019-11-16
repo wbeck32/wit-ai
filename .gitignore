@@ -1,3 +1,5 @@
+src/entities*
+
 # Logs
 logs
 *.log

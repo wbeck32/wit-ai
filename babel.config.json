@@ -1,0 +1,19 @@
+{
+	"presets": [
+		"@babel/env"
+	],
+	"plugins": [
+		[
+			"@babel/plugin-transform-runtime",
+			{
+				"useESModules": true,
+				"corejs": 3,
+				"proposals": true
+			}
+		],
+		"inline-dotenv",
+		"@babel/plugin-proposal-class-properties",
+		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/plugin-transform-async-to-generator"
+	]
+}
